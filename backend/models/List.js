@@ -1,7 +1,10 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const listSchema = new mongoose.Schema({
-    name: { type: String, require: true },
-    createAt: { type: Date, default: Date.now }
+    name: { type: String, required: true },
+    createAt: { type: Date, default: Date.now },
+    tasks:[
+        {type: mongoose.Schema.Types.ObjectId, ref:'Task'}
+    ]
 })
-export default mongoose.model.List || mongoose.model("List", listSchema);
+export default mongoose.models.List || mongoose.model("List", listSchema);
